@@ -28,14 +28,24 @@ router.post('/workouts', async ({ body }, res) => {
     }
 });
 
-router.put('/workouts/:id', async ({ params }, res) => {
+router.put('/workouts/:id', async (req, res) => {
     try {
         const dbWorkout = await Workout.updateOne({
-            _id: mongojs.ObjectId(params.id)
+            _id: mongojs.ObjectId(req.params.id)
         },
         {
             $set: {
-                exercise: params
+                excercises: [
+                    {
+                        type: req.body.type,
+                        name: req.body.name,
+                        duration: req.body.duration,
+                        weight: req.body.weight,
+                        reps: req.body.reps,
+                        sets: req.body.sets,
+                        distance: req.body.distance
+                      }
+                ],
             }
         })
         if(dbWorkout){
