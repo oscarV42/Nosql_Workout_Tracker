@@ -56,6 +56,33 @@ router.put('/workouts/:id', async (req, res) => {
     }catch(err) {
         res.status(500).json(err)
     }
+});
+
+router.get('/workouts/range', async (req, res) => {
+    try {
+        const dbWorkoutRange = await Workout.aggregate([
+            { $sort: { day: -1 }},
+            { $limit: 7 },
+            {$set: {
+                totalDuration: {
+                    $reduce: {
+                        input: '$exercise', 
+                        initialValue: 0, 
+                        in: {
+                            $add: ['$value, $this.duration']
+                        }
+                    }
+                }
+            }}
+        ])
+        if(dbWorkoutRange){
+            res.status(200).json(dbWorkoutRange)
+        }else {
+            res.status(400).json({ message: 'No workouts found in the database!' })
+        }
+    }catch (err){
+        res.status(500).json(err)
+    }
 })
 
 module.exports = router
