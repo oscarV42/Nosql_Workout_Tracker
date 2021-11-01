@@ -47,18 +47,8 @@ router.put('/workouts/:id', async (req, res) => {
             _id: mongojs.ObjectId(req.params.id)
         },
         {
-            $set: {
-                excercises: [
-                    {
-                        type: req.body.type,
-                        name: req.body.name,
-                        duration: req.body.duration,
-                        weight: req.body.weight,
-                        reps: req.body.reps,
-                        sets: req.body.sets,
-                        distance: req.body.distance
-                      }
-                ],
+            $push: {
+                excercises: req.body
             }
         })
         if(dbWorkout){
