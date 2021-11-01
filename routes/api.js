@@ -8,10 +8,10 @@ router.get('/workouts', async ({ body }, res) => {
             { $set: {
                 totalDuration: {
                     $reduce: {
-                        input: '$exercise',
+                        input: '$exercises',
                         initialValue: 0, 
                         in: {
-                            $add : ['$value', '$this.duration']
+                            $add : ['$$value', '$$this.duration']
                         }
                     }
                 }
@@ -20,6 +20,7 @@ router.get('/workouts', async ({ body }, res) => {
 
         if(dbWorkouts){
             res.status(200).json(dbWorkouts)
+            console.log(dbWorkouts)
         }else{
             res.status(400).json({ message: 'No workouts found in the database!'})
         }
@@ -69,10 +70,10 @@ router.get('/workouts/range', async (req, res) => {
             {$set: {
                 totalDuration: {
                     $reduce: {
-                        input: '$exercise', 
+                        input: '$exercises', 
                         initialValue: 0, 
                         in: {
-                            $add: ['$value, $this.duration']
+                            $add : ['$$value', '$$this.duration']
                         }
                     }
                 }
