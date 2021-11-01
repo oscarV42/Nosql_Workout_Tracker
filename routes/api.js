@@ -3,8 +3,21 @@ const Workout = require("../models/workout.js");
 
 router.get('/workouts', async ({ body }, res) => {
     try {
-        const dbWorkouts = await Workout.find({})
-        .sort({ day: 1 })
+        const dbWorkouts = await Workout.aggregate([
+            { $sort: { day: 1 }},
+            { $set: {
+                totalDuration: {
+                    $reduce: {
+                        input: '$exercise',
+                        initialValue: 0, 
+                        in: {
+                            $add : ['$value', '$this.duration']
+                        }
+                    }
+                }
+            } }
+        ])
+
         if(dbWorkouts){
             res.status(200).json(dbWorkouts)
         }else{
