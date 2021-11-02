@@ -32,7 +32,7 @@ An application that tracks a users workout routine using Mongo database, Mongoos
     - Node.js
     - MongoDB
     - Mongoose
-    - Express
+    - Express.js
 
 ## Installation
 
@@ -58,11 +58,11 @@ You can add a new exercise or continue the exercise by clicking either button an
 
 After selecting, you will be presented with an input form that may look like this:
 
-![WorkoutForm](assets\images\WorkoutTrackerForm.PNG)
+![WorkoutForm](assets/images/WorkoutTrackerForm.PNG)
 
 You can see the workout history by clicking `Dashboard` in the navigation bar, you will be presented with the following:
 
-![Dashboard](assets\images\WorkoutTrackerDash.PNG)
+![Dashboard](assets/images/WorkoutTrackerDash.PNG)
 
 ## License
 
