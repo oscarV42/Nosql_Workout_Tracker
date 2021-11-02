@@ -50,19 +50,19 @@ Run `npm start` command in the main directory to start the server after installi
 
 You should see this homepage if navigated correctly:
 
-![homepage]('assets/images/WorkoutTrackerHome.PNG')
+![homepage](assets/images/WorkoutTrackerHome.PNG)
 
 You can add a new exercise or continue the exercise by clicking either button and the application will redirect to type selection form. You can choose cardio or resistance:
 
-![SelectionForm]('assets/images/WorkoutTrackerNewWorkout.PNG')
+![SelectionForm](assets/images/WorkoutTrackerNewWorkout.PNG)
 
 After selecting, you will be presented with an input form that may look like this:
 
-![WorkoutForm]('assets\images\WorkoutTrackerForm.PNG')
+![WorkoutForm](assets\images\WorkoutTrackerForm.PNG)
 
 You can see the workout history by clicking `Dashboard` in the navigation bar, you will be presented with the following:
 
-![Dashboard]('assets\images\WorkoutTrackerDash.PNG')
+![Dashboard](assets\images\WorkoutTrackerDash.PNG)
 
 ## License
 
